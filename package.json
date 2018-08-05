@@ -1,0 +1,53 @@
+{
+  "name": "clean-architecture-nodejs-typescript",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Implement Clean Architecture in Nodejs Typescript using koa and routing-controllers",
+  "license": "MIT",
+  "author": {
+    "name": "My Le Phuoc",
+    "email": "lephuocmy668@gmail.com"
+  },
+  "scripts": {
+    "start": "npm run build && node ./build/app.js",
+    "start:watch": "npm run build:watch & nodemon ./build/app.js",
+    "build": "node_modules/.bin/tsc",
+    "build:watch": "npm run build -- -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lephuocmy668/clean-architecture-nodejs-typescript.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lephuocmy668/clean-architecture-nodejs-typescript/issues"
+  },
+  "tags": [
+    "clean-architecture",
+    "koa",
+    "typescript-koa",
+    "routing-controllers"
+  ],
+  "dependencies": {
+    "inversify": "^4.13.0",
+    "kafka-node": "^2.6.1",
+    "koa": "^2.0.0-alpha.8",
+    "koa-bodyparser": "4.2.0",
+    "koa-router": "^8.0.0-alpha.1",
+    "multer": "1.3.0",
+    "nps": "^5.7.1",
+    "reflect-metadata": "0.1.10",
+    "routing-controllers": "^0.7.7",
+    "typedi": "^0.8.0",
+    "typeorm": "^0.2.7",
+    "uuid": "^3.3.2",
+    "was": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/koa": "2.0.39",
+    "@types/koa-bodyparser": "3.0.23",
+    "@types/koa-router": "7.0.22",
+    "@types/node": "7.0.22",
+    "nodemon": "1.11.0",
+    "typescript": "2.3.3"
+  }
+}
