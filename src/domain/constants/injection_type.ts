@@ -1,3 +1,3 @@
 export const TYPES = {
-  TypeOrmRepositoryOfTopicEntity: Symbol('TypeOrmRepositoryOfTopicEntity'),
+  TypeOrmRepositoryOfUserEntity: Symbol("TypeOrmRepositoryOfUserEntity")
 };

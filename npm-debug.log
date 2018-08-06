@@ -1,0 +1,136 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'typescript' ]
+2 info using npm@3.5.2
+3 info using node@v4.2.6
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 silly fetchPackageMetaData typescript
+8 silly fetchNamedPackageData typescript
+9 silly mapToRegistry name typescript
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry uri https://registry.npmjs.org/typescript
+13 verbose request uri https://registry.npmjs.org/typescript
+14 verbose request no auth needed
+15 info attempt registry request try #1 at 6:04:33 PM
+16 verbose request id 2bed1b407d16b35c
+17 verbose etag W/"9f295062926edb18e8d05c754a16c485"
+18 verbose lastModified Sat, 04 Aug 2018 06:13:51 GMT
+19 http request GET https://registry.npmjs.org/typescript
+20 http 304 https://registry.npmjs.org/typescript
+21 verbose headers { date: 'Mon, 06 Aug 2018 11:04:33 GMT',
+21 verbose headers   connection: 'keep-alive',
+21 verbose headers   'set-cookie': [ '__cfduid=db9725746f9b1b49e6722ef3b5f74c9b01533553473; expires=Tue, 06-Aug-19 11:04:33 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+21 verbose headers   'cache-control': 'max-age=300',
+21 verbose headers   'cf-cache-status': 'HIT',
+21 verbose headers   'cf-ray': '446105f91c9530f0-SIN',
+21 verbose headers   etag: '"9f295062926edb18e8d05c754a16c485"',
+21 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+21 verbose headers   'last-modified': 'Sat, 04 Aug 2018 06:13:51 GMT',
+21 verbose headers   vary: 'accept-encoding, accept',
+21 verbose headers   server: 'cloudflare' }
+22 silly get cb [ 304,
+22 silly get   { date: 'Mon, 06 Aug 2018 11:04:33 GMT',
+22 silly get     connection: 'keep-alive',
+22 silly get     'set-cookie': [ '__cfduid=db9725746f9b1b49e6722ef3b5f74c9b01533553473; expires=Tue, 06-Aug-19 11:04:33 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+22 silly get     'cache-control': 'max-age=300',
+22 silly get     'cf-cache-status': 'HIT',
+22 silly get     'cf-ray': '446105f91c9530f0-SIN',
+22 silly get     etag: '"9f295062926edb18e8d05c754a16c485"',
+22 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+22 silly get     'last-modified': 'Sat, 04 Aug 2018 06:13:51 GMT',
+22 silly get     vary: 'accept-encoding, accept',
+22 silly get     server: 'cloudflare' } ]
+23 verbose etag https://registry.npmjs.org/typescript from cache
+24 verbose get saving typescript to /home/local/ELARION/mylp/.npm/registry.npmjs.org/typescript/.cache.json
+25 silly install normalizeTree
+26 silly loadCurrentTree Finishing
+27 silly loadIdealTree Starting
+28 silly install loadIdealTree
+29 silly cloneCurrentTree Starting
+30 silly install cloneCurrentTreeToIdealTree
+31 silly cloneCurrentTree Finishing
+32 silly loadShrinkwrap Starting
+33 silly install loadShrinkwrap
+34 silly loadShrinkwrap Finishing
+35 silly loadAllDepsIntoIdealTree Starting
+36 silly install loadAllDepsIntoIdealTree
+37 silly resolveWithNewModule typescript@3.0.1 checking installable status
+38 silly cache add args [ 'typescript', null ]
+39 verbose cache add spec typescript
+40 silly cache add parsed spec Result {
+40 silly cache add   raw: 'typescript',
+40 silly cache add   scope: null,
+40 silly cache add   name: 'typescript',
+40 silly cache add   rawSpec: '',
+40 silly cache add   spec: 'latest',
+40 silly cache add   type: 'tag' }
+41 silly addNamed typescript@latest
+42 verbose addNamed "latest" is being treated as a dist-tag for typescript
+43 info addNameTag [ 'typescript', 'latest' ]
+44 silly mapToRegistry name typescript
+45 silly mapToRegistry using default registry
+46 silly mapToRegistry registry https://registry.npmjs.org/
+47 silly mapToRegistry uri https://registry.npmjs.org/typescript
+48 verbose addNameTag registry:https://registry.npmjs.org/typescript not in flight; fetching
+49 verbose get https://registry.npmjs.org/typescript not expired, no request
+50 silly addNameTag next cb for typescript with tag latest
+51 silly addNamed typescript@3.0.1
+52 verbose addNamed "3.0.1" is a plain semver version for typescript
+53 silly mapToRegistry name typescript
+54 silly mapToRegistry using default registry
+55 silly mapToRegistry registry https://registry.npmjs.org/
+56 silly mapToRegistry uri https://registry.npmjs.org/typescript
+57 verbose addRemoteTarball https://registry.npmjs.org/typescript/-/typescript-3.0.1.tgz not in flight; adding
+58 verbose addRemoteTarball [ 'https://registry.npmjs.org/typescript/-/typescript-3.0.1.tgz',
+58 verbose addRemoteTarball   '43738f29585d3a87575520a4b93ab6026ef11fdb' ]
+59 info retry fetch attempt 1 at 6:04:33 PM
+60 info attempt registry request try #1 at 6:04:33 PM
+61 http fetch GET https://registry.npmjs.org/typescript/-/typescript-3.0.1.tgz
+62 http fetch 200 https://registry.npmjs.org/typescript/-/typescript-3.0.1.tgz
+63 silly fetchAndShaCheck shasum 43738f29585d3a87575520a4b93ab6026ef11fdb
+64 verbose addTmpTarball /tmp/npm-20373-222a5231/registry.npmjs.org/typescript/-/typescript-3.0.1.tgz not in flight; adding
+65 verbose addTmpTarball already have metadata; skipping unpack for typescript@3.0.1
+66 silly cache afterAdd typescript@3.0.1
+67 verbose afterAdd /home/local/ELARION/mylp/.npm/typescript/3.0.1/package/package.json not in flight; writing
+68 verbose afterAdd /home/local/ELARION/mylp/.npm/typescript/3.0.1/package/package.json written
+69 silly loadAllDepsIntoIdealTree Finishing
+70 silly idealTree:prePrune lib
+70 silly idealTree:prePrune └── typescript@3.0.1
+71 silly loadIdealTree Finishing
+72 silly currentTree lib
+73 silly idealTree lib
+73 silly idealTree └── typescript@3.0.1
+74 silly generateActionsToTake Starting
+75 silly install generateActionsToTake
+76 warn checkPermissions Missing write access to /usr/local/lib/node_modules
+77 silly rollbackFailedOptional Starting
+78 silly rollbackFailedOptional Finishing
+79 silly runTopLevelLifecycles Starting
+80 silly runTopLevelLifecycles Finishing
+81 silly install printInstalled
+82 verbose stack Error: EACCES: permission denied, access '/usr/local/lib/node_modules'
+82 verbose stack     at Error (native)
+83 verbose cwd /home/local/ELARION/mylp/Desktop/nodejs-typescript-clean-architecture
+84 error Linux 4.8.0-36-generic
+85 error argv "/usr/bin/nodejs" "/usr/bin/npm" "install" "-g" "typescript"
+86 error node v4.2.6
+87 error npm  v3.5.2
+88 error path /usr/local/lib/node_modules
+89 error code EACCES
+90 error errno -13
+91 error syscall access
+92 error Error: EACCES: permission denied, access '/usr/local/lib/node_modules'
+92 error     at Error (native)
+92 error  { [Error: EACCES: permission denied, access '/usr/local/lib/node_modules']
+92 error   errno: -13,
+92 error   code: 'EACCES',
+92 error   syscall: 'access',
+92 error   path: '/usr/local/lib/node_modules' }
+93 error Please try running this command again as root/Administrator.
+94 verbose exit [ -13, true ]

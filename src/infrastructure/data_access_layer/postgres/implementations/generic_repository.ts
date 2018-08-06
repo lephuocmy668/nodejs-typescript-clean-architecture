@@ -1,7 +1,7 @@
-import { injectable, unmanaged } from 'inversify';
-import { GenericRepository } from '../../../../domain/interfaces/repositories/generic_repository';
-import { DataMapper } from '../interfaces/data_mapper';
-import { Repository as TypeOrmRepository } from 'typeorm';
+import { injectable, unmanaged } from "inversify";
+import { GenericRepository } from "../../../../domain/interfaces/repositories/generic_repository";
+import { DataMapper } from "../interfaces/data_mapper";
+import { Repository as TypeOrmRepository } from "typeorm";
 
 @injectable()
 export class GenericRepositoryImpl<TDomainEntity, TDBEntity>

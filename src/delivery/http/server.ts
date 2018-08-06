@@ -1,7 +1,7 @@
-import 'reflect-metadata';
-import { createKoaServer, useContainer } from 'routing-controllers';
-import { Container } from 'typedi';
-import { TopicController } from './controllers/TopicController';
+import "reflect-metadata";
+import { createKoaServer, useContainer } from "routing-controllers";
+import { Container } from "typedi";
+import { UserController } from "./controllers/UserController";
 
 /**
  * Setup routing-controllers to use typedi container.
@@ -17,7 +17,7 @@ const koaApp = createKoaServer({
    * We can add options about how routing-controllers should configure itself.
    * Here we specify what controllers should be registered in our express server.
    */
-  controllers: [TopicController],
+  controllers: [UserController]
 });
 
 /**
@@ -25,4 +25,4 @@ const koaApp = createKoaServer({
  */
 koaApp.listen(process.env.APP_PORT || 3000);
 
-console.log('Server is up and running at port 3000');
+console.log("Server is up and running at port 3000");
