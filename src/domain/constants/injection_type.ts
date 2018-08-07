@@ -1,3 +1,5 @@
 export const TYPES = {
-  TypeOrmRepositoryOfUserEntity: Symbol("TypeOrmRepositoryOfUserEntity")
+  TypeOrmRepositoryOfUserEntity: "TypeOrmRepositoryOfUserEntity",
+  TypeInfrastructureCassandaraClient: "infrastructure.cassandara_client",
+  TypeRepositoryUserRepository: "repository.userrepository"
 };

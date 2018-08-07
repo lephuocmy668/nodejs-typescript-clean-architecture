@@ -28,6 +28,8 @@
     "routing-controllers"
   ],
   "dependencies": {
+    "@types/cassandra-driver": "^3.4.0",
+    "cassandra-driver": "^3.5.0",
     "inversify": "^4.13.0",
     "kafka-node": "^2.6.1",
     "koa": "^2.0.0-alpha.8",

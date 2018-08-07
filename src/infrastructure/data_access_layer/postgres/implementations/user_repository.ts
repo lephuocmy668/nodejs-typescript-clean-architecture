@@ -5,17 +5,18 @@ import { User } from "../../../../domain/entities/user";
 import { GenericRepositoryImpl } from "./generic_repository";
 import { User as UserDBEntity } from "../entities/user";
 import { UserDataMapper } from "../data_mappers/user";
+import { Client } from "cassandra-driver";
+import { Service, Inject } from "typedi";
 import { TYPES } from "../../../../domain/constants/injection_type";
 
-@injectable()
+@Service(TYPES.TypeRepositoryUserRepository)
 export class UserRepositoryImpl
   extends GenericRepositoryImpl<User, UserDBEntity>
   implements UserRepository {
   public constructor(
-    @inject(TYPES.TypeOrmRepositoryOfUserEntity)
-    repository: TypeOrmRepository<UserDBEntity>
+    @Inject(TYPES.TypeInfrastructureCassandaraClient) client: Client
   ) {
-    super(repository, new UserDataMapper());
+    super(client);
   }
   // Add custom methods here ...
 }
