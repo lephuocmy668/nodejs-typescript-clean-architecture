@@ -7,9 +7,13 @@ const cassandra_driver_1 = require("cassandra-driver");
 const routing_controllers_1 = require("routing-controllers");
 const UserController_1 = require("./delivery/http/controllers/UserController");
 const injection_type_1 = require("./domain/constants/injection_type");
+// const cassandaraClient = new CassandraClient({
+//   contactPoints: ["h1", "h2"],
+//   keyspace: "ks1"
+// });
 const cassandaraClient = new cassandra_driver_1.Client({
-    contactPoints: ["h1", "h2"],
-    keyspace: "ks1"
+    contactPoints: ["127.0.0.1"],
+    authProvider: new cassandra_driver_1.auth.PlainTextAuthProvider("CassandraAuth", "CassandraAuth")
 });
 typedi_1.Container.set(injection_type_1.TYPES.TypeInfrastructureCassandaraClient, cassandaraClient);
 typedi_1.Container.set(injection_type_1.TYPES.TypeRepositoryUserRepository, new user_repository_1.UserRepositoryImpl(typedi_1.Container.get(injection_type_1.TYPES.TypeInfrastructureCassandaraClient)));

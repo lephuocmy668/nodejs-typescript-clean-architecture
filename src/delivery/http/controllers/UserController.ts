@@ -24,7 +24,9 @@ export class UserController {
 
   @Post("/users")
   user(@Body() user: User): Promise<User> {
-    user.name = "sllslssl";
+    user.name = "Le Phuoc My";
+    user.id = "lephuocmy668";
+    user.description = "My name is My";
     return this._userRepository.create(user);
   }
 

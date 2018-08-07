@@ -26,8 +26,6 @@ export class GenericRepositoryImpl<TDomainEntity, TDBEntity>
   // }
 
   public async readOneByID(id: string) {
-    // const entity = await this._repository.findOne(id);
-    // return this._dataMapper.fromDBEntityToDomainEntity(entity);
     return new Promise<TDomainEntity>((resolve, reject) => {
       resolve(null);
     });
@@ -35,7 +33,16 @@ export class GenericRepositoryImpl<TDomainEntity, TDBEntity>
 
   public async create(input: TDomainEntity) {
     return new Promise<TDomainEntity>((resolve, reject) => {
-      resolve(input);
+      this._client
+        .execute(
+          `CREATE KEYSPACE users WITH REPLICATION = {'class':'SimpleStrategy', 'replication_factor':1};`
+        )
+        .then(data => {
+          resolve(input);
+        })
+        .catch(ex => {
+          reject(ex);
+        });
     });
   }
 
