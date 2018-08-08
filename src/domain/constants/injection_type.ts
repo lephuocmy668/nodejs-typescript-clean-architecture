@@ -1,5 +1,5 @@
 export const TYPES = {
-  TypeOrmRepositoryOfUserEntity: "TypeOrmRepositoryOfUserEntity",
   TypeInfrastructureCassandaraClient: "infrastructure.cassandara_client",
-  TypeRepositoryUserRepository: "repository.userrepository"
+  TypeRepositoryUserRepository: "repository.userrepository",
+  TypeInfrastructureUserKeyspace: "repository.user_keyspace"
 };

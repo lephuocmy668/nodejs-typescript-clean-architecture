@@ -22,8 +22,15 @@ export class UserController {
     this._userRepository = userRepository;
   }
 
+  @Get("/users")
+  all(): Promise<User[]> {
+    const userId = 1;
+    return this._userRepository.readAll();
+  }
+
   @Post("/users")
   user(@Body() user: User): Promise<User> {
+    console.log("---------", user);
     user.name = "Le Phuoc My";
     user.id = "lephuocmy668";
     user.description = "My name is My";
