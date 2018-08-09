@@ -4,13 +4,14 @@ import { DataMapper } from "../interfaces/data_mapper";
 import { Client } from "cassandra-driver";
 import { Service, Inject } from "typedi";
 import { TYPES } from "../../../../domain/constants/injection_type";
+import { keys } from "ts-transformer-keys";
 
 @Service("repository.generic_repository")
 export class GenericRepositoryImpl<TDomainEntity>
   implements GenericRepository<TDomainEntity> {
-  private readonly _client: Client;
+  protected readonly _client: Client;
   private readonly _tableName: string;
-  private readonly _keyspace: string;
+  protected readonly _keyspace: string;
   private readonly _dataMapper: DataMapper<TDomainEntity, any>;
 
   public constructor(
@@ -52,16 +53,16 @@ export class GenericRepositoryImpl<TDomainEntity>
   public async create(input: TDomainEntity) {
     return new Promise<TDomainEntity>((resolve, reject) => {
       // accounts (name, description, email) VALUES('Le Phuoc My','My is young software engineer', 'lephuocmy668');
-      let queryString = ` INSERT INTO ` + this._keyspace + ` `;
-
-      this._client
-        .execute(queryString)
-        .then(data => {
-          resolve(input);
-        })
-        .catch(ex => {
-          reject(ex);
-        });
+      // let queryString = ` INSERT INTO ` + this._keyspace + ` `;
+      // const keysOfProps = keys(input);
+      // this._client
+      //   .execute(queryString)
+      //   .then(data => {
+      //     resolve(input);
+      //   })
+      //   .catch(ex => {
+      //     reject(ex);
+      //   });
     });
   }
 

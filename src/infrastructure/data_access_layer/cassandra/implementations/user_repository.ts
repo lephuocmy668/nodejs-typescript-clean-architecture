@@ -11,12 +11,34 @@ import { TYPES } from "../../../../domain/constants/injection_type";
 @Service(TYPES.TypeRepositoryUserRepository)
 export class UserRepositoryImpl extends GenericRepositoryImpl<User>
   implements UserRepository {
+  private readonly table: string;
   public constructor(
     @Inject(TYPES.TypeInfrastructureCassandaraClient) client: Client,
     @Inject(TYPES.TypeInfrastructureUserKeyspace) keyspace: string
   ) {
     const userDataMapper = new UserDataMapper();
     super(client, "account", keyspace, userDataMapper);
+    this.table = "account";
   }
-  // Add custom methods here ...
+
+  public async create(input: User) {
+    return new Promise<User>((resolve, reject) => {
+      let queryString =
+        ` INSERT INTO users.accounts (name, description, email) VALUES( '` +
+        input.name +
+        `' ,'` +
+        input.description +
+        `', '` +
+        input.email +
+        `' );`;
+      this._client
+        .execute(queryString)
+        .then(data => {
+          resolve(input);
+        })
+        .catch(ex => {
+          reject(ex);
+        });
+    });
+  }
 }
