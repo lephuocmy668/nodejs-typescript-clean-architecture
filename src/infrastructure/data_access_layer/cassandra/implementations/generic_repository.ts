@@ -1,12 +1,12 @@
-import { injectable, unmanaged } from "inversify";
-import { GenericRepository } from "../../../../domain/interfaces/repositories/generic_repository";
-import { DataMapper } from "../interfaces/data_mapper";
-import { Client } from "cassandra-driver";
-import { Service, Inject } from "typedi";
-import { TYPES } from "../../../../domain/constants/injection_type";
-import { keys } from "ts-transformer-keys";
+import { injectable, unmanaged } from 'inversify';
+import { GenericRepository } from '../../../../domain/interfaces/repositories/generic_repository';
+import { DataMapper } from '../interfaces/data_mapper';
+import { Client } from 'cassandra-driver';
+import { Service, Inject } from 'typedi';
+import { TYPES } from '../../../../domain/constants/injection_type';
+import { keys } from 'ts-transformer-keys';
 
-@Service("repository.generic_repository")
+@Service('repository.generic_repository')
 export class GenericRepositoryImpl<TDomainEntity>
   implements GenericRepository<TDomainEntity> {
   protected readonly _client: Client;

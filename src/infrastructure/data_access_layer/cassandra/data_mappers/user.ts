@@ -1,18 +1,28 @@
-import { User as UserDomainEntity } from "../../../../domain/entities/user";
-import { DataMapper } from "../interfaces/data_mapper";
+import { User as UserDomainEntity } from '../../../../domain/entities/user';
+import { User as UserDBEntity } from '../model/user';
+import { DataMapper } from '../interfaces/data_mapper';
 
-export class UserDataMapper implements DataMapper<UserDomainEntity, any> {
-  public fromDBEntityToDomainEntity(row: any): UserDomainEntity {
+export class UserDataMapper
+  implements DataMapper<UserDomainEntity, UserDBEntity> {
+  public fromDBEntityToDomainEntity(row: UserDBEntity): UserDomainEntity {
     const user = <UserDomainEntity>{};
-    user.id = row.id || "";
-    user.name = row.name || "";
-    user.description = row.description || "";
-    user.email = row.email || "";
+    user.id = row.id || '';
+    user.name = row.name || '';
+    user.description = row.description || '';
+    user.email = row.email || '';
+    user.organizationID = row.organizationID || '';
     return user;
   }
 
-  public fromDomainEntityToDALEntity(userDomainEntity: UserDomainEntity): any {
-    const user = {};
+  public fromDomainEntityToDALEntity(
+    userDomainEntity: UserDomainEntity
+  ): UserDBEntity {
+    const user = new UserDBEntity();
+    user.id = userDomainEntity.id || '';
+    user.name = userDomainEntity.name || '';
+    user.description = userDomainEntity.description || '';
+    user.email = userDomainEntity.email || '';
+    user.organizationID = userDomainEntity.organizationID || '';
     return user;
   }
 }
