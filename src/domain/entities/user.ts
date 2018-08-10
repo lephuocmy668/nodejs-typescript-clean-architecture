@@ -1,4 +1,4 @@
-import { Organization } from './organization';
+import { Organization } from "./organization";
 
 export interface User {
   id?: string;
@@ -6,5 +6,5 @@ export interface User {
   description: string;
   email: string;
   organization?: Organization;
-  organizationID: string;
+  organization_id: string;
 }

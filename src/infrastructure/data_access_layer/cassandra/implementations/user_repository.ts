@@ -1,5 +1,3 @@
-import { inject, injectable } from "inversify";
-import { Repository as TypeOrmRepository } from "typeorm";
 import { UserRepository } from "../../../../domain/interfaces/repositories/user";
 import { User } from "../../../../domain/entities/user";
 import { GenericRepositoryImpl } from "./generic_repository";
@@ -12,33 +10,14 @@ import { TYPES } from "../../../../domain/constants/injection_type";
 export class UserRepositoryImpl extends GenericRepositoryImpl<User>
   implements UserRepository {
   private readonly table: string;
+  private userDataMapper: UserDataMapper;
   public constructor(
-    @Inject(TYPES.TypeInfrastructureCassandaraClient) client: Client,
+    @Inject(TYPES.TypeInfrastructureCassandaraClient) client: any,
     @Inject(TYPES.TypeInfrastructureUserKeyspace) keyspace: string
   ) {
     const userDataMapper = new UserDataMapper();
-    super(client, "account", keyspace, userDataMapper);
-    this.table = "account";
-  }
-
-  public async create(input: User) {
-    return new Promise<User>((resolve, reject) => {
-      let queryString =
-        ` INSERT INTO users.accounts (name, description, email) VALUES( '` +
-        input.name +
-        `' ,'` +
-        input.description +
-        `', '` +
-        input.email +
-        `' );`;
-      this._client
-        .execute(queryString)
-        .then(data => {
-          resolve(input);
-        })
-        .catch(ex => {
-          reject(ex);
-        });
-    });
+    super(client, "users", keyspace, userDataMapper);
+    this.table = "users";
+    this.userDataMapper = userDataMapper;
   }
 }

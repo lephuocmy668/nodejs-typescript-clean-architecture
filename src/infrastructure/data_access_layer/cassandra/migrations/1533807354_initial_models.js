@@ -6,7 +6,7 @@ var migration1533807354 = {
       id uuid PRIMARY KEY,
       name text,
       email text,
-      description int,
+      description text,
       organization_id uuid
     )
     CREATE TABLE users_by_username (
@@ -37,6 +37,6 @@ var migration1533807354 = {
         handler(false, true);
       }
     });
-  },
+  }
 };
 module.exports = migration1533807354;
