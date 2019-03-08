@@ -26,7 +26,6 @@ export class UserController {
 
   @Get("/users")
   all(): Promise<User[]> {
-    const userId = 1;
     return this._userRepository.readAll();
   }
 

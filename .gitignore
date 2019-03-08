@@ -1,3 +1,8 @@
-lib/
 node_modules/
-build/
+npm-debug.*
+.DS_Store
+.idea
+.nyc_output
+.yarn-error.log
+coverage
+dist/*

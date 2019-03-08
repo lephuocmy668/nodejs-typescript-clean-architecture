@@ -1,4 +1,4 @@
-// CREATE KEYSPACE bluesky WITH REPLICATION = {'class':'SimpleStrategy', 'replication_factor':1};
+// CREATE KEYSPACE tiktok WITH REPLICATION = {'class':'SimpleStrategy', 'replication_factor':1};
 var migration1533807354 = {
   up: function(db, handler) {
     var query = `
