@@ -18,9 +18,7 @@ import { uuid as UUID } from "@typed/uuid";
 export class UserController {
   private readonly _userRepository: UserRepository;
 
-  constructor(
-    @Inject(TYPES.TypeRepositoryUserRepository) userRepository: UserRepository
-  ) {
+  constructor( @Inject(TYPES.TypeRepositoryUserRepository) userRepository: UserRepository) {
     this._userRepository = userRepository;
   }
 
