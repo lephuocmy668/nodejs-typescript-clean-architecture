@@ -1,49 +1,21 @@
 require("dotenv").load();
 import "reflect-metadata";
-import { Container } from "typedi";
-import { UserRepositoryImpl } from "./infrastructure/data_access_layer/cassandra/implementations/user_repository";
-import {
-  Client as CassandraClient,
-  auth as CassandraAuth
-} from "cassandra-driver";
-import { createKoaServer, useContainer } from "routing-controllers";
-import { UserController } from "./delivery/http/controllers/UserController";
-import { TYPES } from "./domain/constants/injection_type";
+import { bootstrap } from "./infrastructure/bootstrapping/bootstrap";
+import { container } from "./infrastructure/ioc/ioc_container";
+import { referenceDataIoCModule } from "./inversify.config";
 
-var cassandaraClient = require("cassanknex")({
-  connection: {
-    contactPoints: [process.env.CASSANDRA_HOST],
-    authProvider: new CassandraAuth.PlainTextAuthProvider(
-      process.env.CASSANDRA_USER || "",
-      process.env.CASSANDRA_PASSWORD || ""
-    )
-  },
-  exec: {
-    prepare: false
-  }
-});
+async function runApp() {
+    try {
+        const app = await bootstrap(container, referenceDataIoCModule);
+        return app;
+    } catch (ex) {
+        throw (ex);
+    }
+}
 
-cassandaraClient.on("ready", function(err: any) {
-  Container.set(TYPES.TypeInfrastructureCassandaraClient, cassandaraClient);
-  Container.set(
-    TYPES.TypeInfrastructureUserKeyspace,
-    process.env.CASSANDRA_KEYSPACE
-  );
-  Container.set(
-    TYPES.TypeRepositoryUserRepository,
-    new UserRepositoryImpl(
-      Container.get<CassandraClient>(TYPES.TypeInfrastructureCassandaraClient),
-      Container.get<string>(TYPES.TypeInfrastructureUserKeyspace)
-    )
-  );
+(async () => {
+    await runApp();
+    // console.log("=======", await <UserInteractorImp>container.get<any>(TYPES.TypeUserInteractor).findAll());
+})();
 
-  useContainer(Container);
-
-  const koaApp = createKoaServer({
-    controllers: [UserController]
-  });
-
-  koaApp.listen(process.env.PORT || 3000);
-
-  console.log("Server is up and running at port %d", process.env.PORT);
-});
+export { runApp };

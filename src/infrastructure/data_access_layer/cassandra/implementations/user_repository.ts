@@ -1,23 +1,26 @@
-import { UserRepository } from "../../../../domain/interfaces/repositories/user";
+import { IUserRepository } from "../../../../domain/interfaces/repositories/user";
 import { User } from "../../../../domain/entities/user";
 import { GenericRepositoryImpl } from "./generic_repository";
 import { UserDataMapper } from "../data_mappers/user";
-import { Client } from "cassandra-driver";
-import { Service, Inject } from "typedi";
-import { TYPES } from "../../../../domain/constants/injection_type";
+import { injectable } from "inversify";
+import { cassandraClient, userKeySpace } from "../../../../domain/constants/decorators";
 
-@Service(TYPES.TypeRepositoryUserRepository)
-export class UserRepositoryImpl extends GenericRepositoryImpl<User>
-  implements UserRepository {
-  private readonly table: string;
-  private userDataMapper: UserDataMapper;
-  public constructor(
-    @Inject(TYPES.TypeInfrastructureCassandaraClient) client: any,
-    @Inject(TYPES.TypeInfrastructureUserKeyspace) keyspace: string
-  ) {
-    const userDataMapper = new UserDataMapper();
-    super(client, "users", keyspace, userDataMapper);
-    this.table = "users";
-    this.userDataMapper = userDataMapper;
-  }
+export type UserKeySpace = string;
+
+@injectable()
+export class UserRepositoryImp extends GenericRepositoryImpl<User> implements IUserRepository {
+
+    private readonly table: string;
+    private userDataMapper: UserDataMapper;
+
+    public constructor(
+        @cassandraClient client: any,
+        userKeySpace: string = "tiktok",
+        tableName: string = "users",
+        userDataMapper: UserDataMapper = new UserDataMapper()
+    ) {
+        super(client, tableName, userKeySpace, userDataMapper);
+        this.table = "users";
+        this.userDataMapper = userDataMapper;
+    }
 }
