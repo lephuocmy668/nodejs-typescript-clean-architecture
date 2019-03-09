@@ -6,7 +6,7 @@ import { referenceDataIoCModule } from "./inversify.config";
 
 async function runApp() {
     try {
-        const app = await bootstrap(container, referenceDataIoCModule);
+        const app = await bootstrap(container, 3000, referenceDataIoCModule);
         return app;
     } catch (ex) {
         throw (ex);
