@@ -8,15 +8,7 @@ var migration1533807354 = {
       email text,
       description text,
       organization_id uuid
-    )
-    CREATE TABLE users_by_username (
-      username text PRIMARY KEY,
-      user_id uuid
-    )
-    CREATE TABLE users_by_email (
-      email text PRIMARY KEY,
-      user_id uuid
-    )
+    );
     `;
         var params = [];
         db.execute(query, params, { prepare: true }, function (err) {
